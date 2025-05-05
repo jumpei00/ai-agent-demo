@@ -10,19 +10,20 @@ import (
 )
 
 func main() {
-	s := server.NewMCPServer(
-		"Claude Desktop MCP Demo",
-		"0.0.1",
-		server.WithLogging(),
-	)
-
 	uuidTool := mcp.NewTool("uuid",
 		mcp.WithDescription("Generate a UUID"),
 	)
 
-	s.AddTool(uuidTool, uuidToolHanlder)
+	mcpServer := server.NewMCPServer(
+		"MCP Demo",
+		"0.0.1",
+		server.WithLogging(),
+	)
 
-	if err := server.ServeStdio(s); err != nil {
+	mcpServer.AddTool(uuidTool, uuidToolHanlder)
+
+	sseServer := server.NewSSEServer(mcpServer, server.WithBaseURL("http://localhost:8080"))
+	if err := sseServer.Start(":8080"); err != nil {
 		log.Fatal(err)
 	}
 }
