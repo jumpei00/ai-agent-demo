@@ -74,4 +74,12 @@ Or, build and then run:
 ```bash
 go build -o uuid-generator ./cmd/main.go
 ./uuid-generator
-``` 
+```
+
+## Important Notes
+
+### mastra-agent
+- Create a file named `.env.development` and add `GOOGLE_GENERATIVE_AI_API_KEY=your gemini api key`
+
+### python-agent/multi_tool_agent
+- Create a file named `.env` and add `GOOGLE_GENAI_USE_VERTEXAI=FALSE`, `GOOGLE_API_KEY=your gemini api key` 
