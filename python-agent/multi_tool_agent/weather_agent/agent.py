@@ -4,10 +4,10 @@ from google.adk.agents import LlmAgent
 
 
 def get_weather(city: str) -> dict:
-    if city.lower() == "日本":
+    if city.lower() == "東京":
         return {
             "status": "success",
-            "report": ("日本の天気は晴れで、気温は25度です。"),
+            "report": ("東京の天気は晴れで、気温は25度です。"),
         }
     return {
         "status": "error",
@@ -16,10 +16,10 @@ def get_weather(city: str) -> dict:
 
 
 def get_current_time(city: str) -> dict:
-    if city.lower() == "日本":
+    if city.lower() == "東京":
         tz = ZoneInfo("Asia/Tokyo")
         now = datetime.datetime.now(tz)
-        report = f"日本の現在時刻は{now.strftime('%Y-%m-%d %H:%M:%S %Z%z')}"
+        report = f"東京の現在時刻は{now.strftime('%Y-%m-%d %H:%M:%S %Z%z')}"
         return {"status": "success", "report": report}
 
     return {
